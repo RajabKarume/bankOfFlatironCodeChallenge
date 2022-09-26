@@ -5,7 +5,7 @@ import { useEffect } from "react";
 function Search() {
 
   const [transactions, setTransactions] = useState([])
-  const [searching ,setSearching] = useState("")
+  // const [searching ,setSearching] = useState("")
   
   useEffect(() => {
     const fetchTransactions = async ()=>{
@@ -16,16 +16,11 @@ function Search() {
     }
     fetchTransactions();
   },[])
+  console.log(transactions)
   const onChangeHandler = (event) => {
     event.preventDefault();
-    setSearching(event.target.value);
-  };
-
-  if (searching.length>0){
-    transactions.filter((transaction)=>{
-      return transaction.description.match(searching);
-    })
   }
+
 
   return (
     <div className="ui large fluid icon input">
@@ -33,7 +28,7 @@ function Search() {
         type="text"
         placeholder="Search your Recent Transactions"
         onChange={onChangeHandler}
-        value= {searching}
+        // value= {searching}
       />
       <i className="circular search link icon"></i>
     </div>
