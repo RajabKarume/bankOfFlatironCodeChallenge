@@ -6,9 +6,10 @@ function AddTransactionForm() {
   const [description, setDescription] = useState("");
   const [category, setCategory] = useState("");
   const [amount, setAmount] = useState("")
+  const [id, setId] = useState("")
 
   function handleSubmit(){
-    const newTransaction = {date, description, category, amount};
+    const newTransaction = {id,date, description, category, amount};
 
     fetch ("http://localhost:8001/transactions",{
           method:'POST',
@@ -24,7 +25,7 @@ function AddTransactionForm() {
   return (
     <div className="ui segment">
       <form className="ui form">
-        <div className="inline fields" >
+        <div className="inline fields" key={setId}>
           <input type="date" name="date" value={date} onChange={(event) => setDate(event.target.value)}/>
           <input type="text" name="description" placeholder="Description" value={description} onChange={(event) => setDescription(event.target.value)} />
           <input type="text" name="category" placeholder="Category" value={category} onChange={(event) => setCategory(event.target.value)}/>

@@ -19,7 +19,7 @@ function Transaction() {
   
   return (
     transactions.map(transaction =>
-      <tr>
+      <tr key={transaction.id}>
           <td>{transaction.date}</td>
           <td>{transaction.description}</td>
           <td>{transaction.category}</td>
